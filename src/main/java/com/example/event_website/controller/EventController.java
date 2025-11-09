@@ -1,26 +1,14 @@
 package com.example.event_website.controller;
 
-import com.example.event_website.model.Enquiry;
 import com.example.event_website.model.Event;
-import com.example.event_website.repository.EnquiryRepository;
-import jakarta.persistence.Access;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-
-@RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class EventController {
-
-    @Autowired
-    EnquiryRepository enquiryRepository;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -36,13 +24,6 @@ public class EventController {
         model.addAttribute("clientsServed", 120);
         model.addAttribute("events", events);
 
-        return "index";
-    }
-
-
-    @PostMapping("/enquiry")
-    public String addEnquiry(@RequestBody Enquiry enquiry) {
-        enquiryRepository.save(enquiry);
-        return "Thank you! Your details have been submitted successfully.";
+        return "index"; // Thymeleaf template
     }
 }
