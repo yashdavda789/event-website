@@ -1,60 +1,111 @@
-.hero {
-  position: relative;
-  /* Set the background image on the container */
-  background-image: url('/images/banner.jpg');
-  background-size: cover; /* **Crucial:** Makes the image cover the entire element */
-  background-position: center top; /* Keeps the top part of the image visible */
-  background-repeat: no-repeat;
-
-  /* Set a fixed height for the hero section */
-  height: 75vh; /* 25% reduced height (as per your original CSS) */
-
-  /* Text styling for the overlay */
-  text-align: center;
-  color: white;
-  overflow: hidden;
-
-  /* Apply the dimming effect directly */
-  filter: brightness(70%); /* Note: filter on the main container applies to background too */
+/* Styling for the logo in the navbar */
+.navbar-logo {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
 }
 
-/* * Remove the separate .banner class entirely
-* You should also adjust the .overlay-text position if the background image itself is not dim enough.
-* To ensure the text remains legible over the background, it's better to create a pseudo-element
-* for the dimming effect (as shown below), and remove the `filter: brightness(70%);` from `.hero`.
-*/
-
-/* Optional: Better way to apply the dimming effect */
-.hero {
+/* New Hero Section for the main banner *behind* the text */
+.hero-new-banner {
     position: relative;
-    background-image: url('/images/banner.jpg');
+    /* Use a different background image here if you want a banner, 
+       otherwise remove and set a background-color */
+    background-image: url('/images/aura-logo-banner.png'); /* Replace with your actual banner image, or remove */
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
-    height: 75vh;
+    height: 75vh; /* Or adjust to a fixed height like 500px */
+    display: flex; /* Use flexbox for easy centering of content */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
     text-align: center;
     color: white;
     overflow: hidden;
-    /* Remove filter: brightness(70%); from here */
 }
 
-.hero::before {
+.hero-new-banner::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Dark overlay using a semi-transparent black background */
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity (0.5) for desired dimness */
-    z-index: 1; /* Place overlay below text */
+    background-color: rgba(0, 0, 0, 0.5); /* Dimming overlay */
+    z-index: 1;
+}
+
+.overlay-text-hero {
+    position: relative; /* Make sure text is above the overlay */
+    z-index: 2;
+    /* Basic styling for the text */
+    padding: 20px;
+}
+
+.overlay-text-hero h1 {
+    font-size: 3em; /* Larger main slogan */
+    margin-bottom: 10px;
+}
+
+.overlay-text-hero h3 {
+    font-size: 1.5em; /* Smaller sub-slogans */
+    margin-top: 5px;
+}
+
+
+/* Existing styles for other sections (Contact, About, Events) remain the same or are slightly adjusted if you added IDs */
+/* Example: Add scroll-spy friendly IDs to your sections in HTML */
+#about, #events, #contact {
+    padding-top: 70px; /* Add padding to account for fixed navbar */
+    margin-top: -70px; /* Compensate for padding so anchor links work correctly */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 40px; /* Smaller logo on small screens */
+    }
+    .hero-new-banner {
+        height: 60vh; /* Adjust hero height for mobile */
+    }
+    .overlay-text-hero h1 {
+        font-size: 2em;
+    }
+    .overlay-text-hero h3 {
+        font-size: 1.2em;
+    }
+}
+
+
+/* Remove the old .hero and .banner styles entirely */
+/*
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  filter: brightness(70%);
+  background-color: black;
+}
+
+.banner {
+  width: 100%;
+  height: 75vh;
+  object-fit: contain;
+  object-position: center top;
+  filter: brightness(70%);
+  background-color: black;
 }
 
 .overlay-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 2; /* Place text above the overlay */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
+
+.logo-img {
+  width: 250px;
+  height: auto;
+  margin-bottom: 10px;
+}
+*/

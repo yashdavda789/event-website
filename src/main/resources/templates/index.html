@@ -9,14 +9,23 @@
 </head>
 <body>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="overlay-text">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/aura-logo-banner.png" alt="Aura Events Logo" class="navbar-logo">
+        </a>
+    </div>
+</nav>
+
+<section class="hero-new-banner">
+    <div class="overlay-text-hero">
+        <h1>Your moments, our perfection</h1>
+        <h3>Parties, Corporate Events</h3>
+        <h3>Birthdays & More</h3>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="py-5 bg-light text-center">
+<section class="py-5 bg-light text-center" id="about">
     <div class="container">
         <h2>About Us</h2>
         <p>We at <strong th:text="${companyName}"></strong> have successfully organized over
@@ -26,13 +35,12 @@
     </div>
 </section>
 
-<!-- Event Categories -->
-<section class="container py-5">
+<section class="container py-5" id="events">
     <h2 class="text-center mb-4">Our Events</h2>
     <div class="row">
         <div class="col-md-4 mb-4" th:each="event : ${events}">
             <div class="card h-100 shadow-sm">
-                <img th:src="${event.image}" class="card-img-top" alt="Event Image">
+                <img th:src="${event.image}" class="card-img-top" th:alt="${event.title}">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${event.title}">Event Title</h5>
                     <p class="card-text" th:text="${event.description}">Description</p>
@@ -43,18 +51,16 @@
     </div>
 </section>
 
-<!-- Contact Section -->
-<section class="contact bg-dark text-white py-5 text-center">
+<section class="contact bg-dark text-white py-5 text-center" id="contact">
     <div class="container">
         <h3>Contact Us</h3>
         <p>Reach out to <strong th:text="${ownerName}">Owner</strong> for bookings & queries.</p>
         <p>📞 <a th:href="${'tel:' + ownerContact}" class="text-white" th:text="${ownerContact}"></a></p>
-        <a th:href="${'https://wa.me/' + ownerContact.replace('+91-', '')}" class="btn btn-success me-2">WhatsApp</a>
+        <a th:href="${'https://wa.me/' + ownerContact.replace('+', '')}" class="btn btn-success me-2">WhatsApp</a>
         <a th:href="${'tel:' + ownerContact}" class="btn btn-primary">Call Now</a>
 
         <hr class="my-4">
 
-        <!-- Enquiry Form -->
         <h4 class="mt-4">For More Details</h4>
         <form id="enquiryForm" class="mx-auto" style="max-width: 500px;">
             <div class="mb-3">
@@ -97,7 +103,6 @@
       document.getElementById("responseMsg").innerText = msg;
     });
 </script>
-
 
 <footer class="bg-secondary text-center text-white py-3">
     <small>© <span th:text="${companyName}"></span> | Crafted with ❤️ by the Aura Team</small>
