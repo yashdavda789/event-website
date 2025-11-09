@@ -1,61 +1,29 @@
+/* -------------------------------------------------------------------
+|  NEW ESSENTIAL STYLES
+|  Used with the cleaned HTML structure for a modern, ASP-like layout.
+------------------------------------------------------------------- */
+
 /* Styling for the logo in the navbar */
 .navbar-logo {
-    height: 50px; /* Adjust height as needed */
-    width: auto; /* Maintain aspect ratio */
+    /* Set height for your small, cropped logo (e.g., aura-logo-small.png) */
+    height: 50px;
+    width: auto;
 }
 
-/* New Hero Section for the main banner *behind* the text */
-.hero-new-banner {
-    position: relative;
-    /* Use a different background image here if you want a banner, 
-       otherwise remove and set a background-color */
-    background-image: url('/images/aura-logo-banner.png'); /* Replace with your actual banner image, or remove */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 75vh; /* Or adjust to a fixed height like 500px */
-    display: flex; /* Use flexbox for easy centering of content */
-    align-items: center; /* Vertically center content */
-    justify-content: center; /* Horizontally center content */
-    text-align: center;
-    color: white;
-    overflow: hidden;
+/* Ensure the navbar uses a light background (overriding bg-dark class in HTML)
+   and stands out slightly with a shadow. */
+.navbar-light {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #eee;
 }
 
-.hero-new-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dimming overlay */
-    z-index: 1;
-}
-
-.overlay-text-hero {
-    position: relative; /* Make sure text is above the overlay */
-    z-index: 2;
-    /* Basic styling for the text */
-    padding: 20px;
-}
-
-.overlay-text-hero h1 {
-    font-size: 3em; /* Larger main slogan */
-    margin-bottom: 10px;
-}
-
-.overlay-text-hero h3 {
-    font-size: 1.5em; /* Smaller sub-slogans */
-    margin-top: 5px;
-}
-
-
-/* Existing styles for other sections (Contact, About, Events) remain the same or are slightly adjusted if you added IDs */
-/* Example: Add scroll-spy friendly IDs to your sections in HTML */
+/* This adjustment is CRITICAL for fixed navbars.
+   It prevents content from being hidden behind the fixed header when using anchor links (#about, #events). */
 #about, #events, #contact {
-    padding-top: 70px; /* Add padding to account for fixed navbar */
-    margin-top: -70px; /* Compensate for padding so anchor links work correctly */
+    /* Adds extra space above the section */
+    padding-top: 80px;
+    /* Moves the anchor link target up so the section title is visible */
+    margin-top: -80px;
 }
 
 /* Responsive adjustments */
@@ -63,49 +31,11 @@
     .navbar-logo {
         height: 40px; /* Smaller logo on small screens */
     }
-    .hero-new-banner {
-        height: 60vh; /* Adjust hero height for mobile */
-    }
-    .overlay-text-hero h1 {
-        font-size: 2em;
-    }
-    .overlay-text-hero h3 {
-        font-size: 1.2em;
-    }
 }
 
+/* -------------------------------------------------------------------
+|  DEPRECATED/REMOVED STYLES
+|  All old, conflicting styles for the banner have been REMOVED.
+------------------------------------------------------------------- */
 
-/* Remove the old .hero and .banner styles entirely */
-/*
-.hero {
-  position: relative;
-  text-align: center;
-  color: white;
-  overflow: hidden;
-  filter: brightness(70%);
-  background-color: black;
-}
-
-.banner {
-  width: 100%;
-  height: 75vh;
-  object-fit: contain;
-  object-position: center top;
-  filter: brightness(70%);
-  background-color: black;
-}
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.logo-img {
-  width: 250px;
-  height: auto;
-  margin-bottom: 10px;
-}
-*/
+/* All previous styles for .hero, .banner, .hero-new-banner, and .overlay-text-hero are gone. */
