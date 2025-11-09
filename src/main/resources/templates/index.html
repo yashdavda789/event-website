@@ -11,7 +11,6 @@
 
 <!-- Hero Section -->
 <section class="hero">
-    <img src="/images/banner.jpg" class="img-fluid banner" alt="Aura Events Banner">
     <div class="overlay-text">
     </div>
 </section>
@@ -41,17 +40,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact bg-dark text-white py-5 text-center">
-    <div class="container">
-        <h3>Contact Us</h3>
-        <p>Reach out to <strong th:text="${ownerName}">Owner</strong> for bookings & queries.</p>
-        <p>📞 <a th:href="${'tel:' + ownerContact}" class="text-white" th:text="${ownerContact}"></a></p>
-        <a th:href="${'https://wa.me/' + ownerContact.replace('+91-', '')}" class="btn btn-success me-2">WhatsApp</a>
-        <a th:href="${'tel:' + ownerContact}" class="btn btn-primary">Call Now</a>
     </div>
 </section>
 
